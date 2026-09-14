@@ -1,0 +1,13 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..');
+const config=JSON.parse(await fs.readFile(path.join(root,'site.config.json'),'utf8'));
+const repo=process.env.RELEASE_REPOSITORY||config.repository||(process.env.VERCEL_GIT_REPO_OWNER&&process.env.VERCEL_GIT_REPO_SLUG?`${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`:process.env.GITHUB_REPOSITORY);
+if(!repo||!/^[-\w.]+\/[-\w.]+$/.test(repo))throw Error('Set RELEASE_REPOSITORY to your GitHub username/repository in Vercel, or fill repository in site.config.json. See README.md.');
+const manifest=JSON.parse(await fs.readFile(path.join(root,'downloads.json'),'utf8'));
+const base=`https://github.com/${repo}/releases/download/${encodeURIComponent(config.releaseTag)}/`;
+const out=path.join(root,'dist');await fs.rm(out,{recursive:true,force:true});await fs.cp(path.join(root,'public'),out,{recursive:true});
+let html=await fs.readFile(path.join(out,'index.html'),'utf8');
+html=html.replaceAll('__RELEASE_BASE__',base).replaceAll('__REPOSITORY_URL__',`https://github.com/${repo}`).replaceAll('__APK_SIZE__',manifest.android.sizeLabel).replaceAll('__WIN_SIZE__',manifest.windows.sizeLabel);
+if(/__[A-Z_]+__/.test(html))throw Error('Unresolved content token');await fs.writeFile(path.join(out,'index.html'),html);
+console.log(`Built website → dist. Downloads point to ${repo}, release ${config.releaseTag}.`);

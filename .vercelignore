@@ -1,0 +1,8 @@
+release-assets/
+node_modules/
+.git/
+*.p12
+*.jks
+*.keystore
+private-signing/
+.sites-runtime/

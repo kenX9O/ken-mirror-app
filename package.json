@@ -1,0 +1,1 @@
+{"name":"ken-mirror-website","version":"1.0.0","private":true,"description":"Ken Mirror Screen download website","type":"module","scripts":{"build":"node scripts/build.mjs","preview":"node scripts/preview.mjs"},"engines":{"node":">=20"}}

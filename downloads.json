@@ -1,0 +1,20 @@
+{
+  "android": {
+    "filename": "KenMirrorScreen-Smooth-Android-0.4.3.apk",
+    "bytes": 26338261,
+    "sizeLabel": "25.1 MB",
+    "sha256": "b766a92ec137c8b8d41bb396e1827f767758f97be3038372086ce7618d6c1106"
+  },
+  "windows": {
+    "filename": "KenMirrorScreen-Windows-0.4.3.zip",
+    "bytes": 159991689,
+    "sizeLabel": "152.6 MB",
+    "sha256": "35cc4a12904f6e7837917c0f7501aeaf6409cf0efcf8c292ca4144082ee3c28d"
+  },
+  "source": {
+    "filename": "KenMirrorScreen-Source-0.4.3.zip",
+    "bytes": 29300598,
+    "sizeLabel": "27.9 MB",
+    "sha256": "e38d0b41aa1927db7d056d19d3590eb168454021f976a79c263d0001ee1d3f55"
+  }
+}

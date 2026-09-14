@@ -1,0 +1,10 @@
+release-assets/
+dist/
+node_modules/
+.vercel/
+.env*
+*.p12
+*.jks
+*.keystore
+private-signing/
+.sites-runtime/
