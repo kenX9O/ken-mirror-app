@@ -1,62 +1,74 @@
-# Ken Mirror Screen website
+Ken Mirror Screen
+Your tablet. A bigger screen.
 
-A responsive, dependency-free download website for Ken Mirror Screen 0.4.3. Includes Android and Windows downloads, public app source, MIT licensing for original code, setup instructions, a native accessible FAQ, and checksum downloads. No analytics or account system.
+A completely free and open-source app that mirrors your Android screen to a Windows PC. Share lessons, present your work, draw with a pen, or watch videos on a larger display.
 
-## Preview on your computer
-1. Install Node.js 20 or newer.
-2. Open a terminal in this folder and run `npm run preview`.
-3. Open http://127.0.0.1:4173 . All four download links work locally using release-assets/.
+No subscriptions. No account required.
 
-## Publish on GitHub and Vercel
-### 1. Create a GitHub repository
-Create a **public** repository, for example `ken-mirror-screen`. Upload the contents of this folder **except release-assets/**. Keep package.json, vercel.json, site.config.json, downloads.json, LICENSE, public/ and scripts/ at the repository root. The small dotfiles .gitignore and .vercelignore protect against accidentally committing app downloads or signing material.
+✨ Features
+Easy pairing — connect using a QR code, a 6-digit code, or nearby device discovery.
+High-quality mirroring — choose the quality that suits your device and network, with settings up to 60 FPS.
+Optional audio sharing — share tablet sound from supported Android apps.
+Fullscreen viewing — enjoy a clean display with hideable controls.
+Flexible display modes — fit the complete tablet screen or fill your monitor.
+Local connection — connect your Android device and PC over the same Wi-Fi network.
+📥 Downloads
 
-The Windows ZIP exceeds GitHub's 100 MiB normal-file limit. The APK also exceeds the web uploader's 25 MiB limit. They belong in Releases, not in the repository file list.
+Open this repository’s Releases section and download:
 
-### 2. Publish release v0.4.3
-In that repository, open Releases → Draft a new release. Create tag **v0.4.3** and upload all four files from release-assets/:
-- KenMirrorScreen-Smooth-Android-0.4.3.apk
-- KenMirrorScreen-Windows-0.4.3.zip
-- KenMirrorScreen-Source-0.4.3.zip
-- SHA256SUMS.txt
+Device	File
+Android	KenMirrorScreen-Smooth-Android-0.4.3.apk
+Windows	KenMirrorScreen-Windows-0.4.3.zip
+Source code	KenMirrorScreen-Source-0.4.3.zip
+🚀 Getting started
+Download and extract the Windows ZIP.
+Open Ken Mirror Screen on your PC.
+Install the Android APK on your tablet or phone. Android may ask you to allow installation from your browser or file manager.
+Connect both devices to the same Wi-Fi network.
+Open the Android app and scan the PC’s QR code, enter its pairing code, or select the nearby PC.
+Accept Android’s screen-sharing permission.
+Enable Share tablet sound if you also want audio.
 
-Publish the release. Use these exact names and tag: the website links are generated from them. Do not upload any private recovery archive. The included public Source ZIP is sanitized and contains no signing keys/passwords.
+If Windows asks for network access, allow the app on your private network so your devices can connect.
 
-### 3. Deploy on Vercel
-Import the GitHub repository as a new Vercel project. Choose **Other** as the framework if asked. The included vercel.json sets:
-- Build command: `npm run build`
-- Output directory: `dist`
-- No dependencies or server functions required.
+💻 Requirements
+Platform	Requirements
+Android	Android 10 or newer
+Windows	Windows 10 or 11, 64-bit
+Connection	Both devices on the same local network
+⚡ Performance tips
 
-Add an environment variable named **RELEASE_REPOSITORY**, with your actual GitHub `username/repository` (for example, `yourname/ken-mirror-screen`, without https://). Set it for Production and Preview. Click Deploy.
+For the best experience:
 
-Alternatively fill `repository` in site.config.json before pushing. If neither is set, the build tries Vercel's Git repository environment variables. It intentionally fails if no valid repository is known, rather than publishing fake download URLs. Those fallback system variables must be exposed in Vercel's project settings to work.
+Use a strong 5 GHz Wi-Fi connection when available.
+Keep your tablet close to the router.
+Connect your PC to the router by Ethernet if possible.
+Pause large downloads and uploads while mirroring.
+Try a lower quality setting if your network struggles.
 
-The deployed website serves only the small HTML/CSS/JS files from dist/. Downloads are served directly from your GitHub release; no large binaries pass through Vercel functions.
+Mirroring latency and frame rate depend on your devices and network. Some Android apps restrict audio or screen capture.
 
-### 4. Check your live site
-Click both app downloads, Download app source, Verify downloads, and View project. Check the downloaded filenames. Test on your phone as well. The release must be public and published, not left as a draft.
+🛠️ Version 0.4.3
+Reduced video buffering to help lower delay.
+Improved full-screen capture and display scaling.
+Improved Windows fullscreen behavior.
+🐛 Report a problem
 
-## Optional: GitHub Pages instead
-Set RELEASE_REPOSITORY in your environment to the GitHub owner/repository and run `npm run build`. Upload the contents of dist/ to a GitHub Pages publishing branch. Local CSS and script URLs are relative so repository subpaths work. The app assets stay in Releases. The Vercel route above does not require GitHub Pages.
+Open an issue in this repository and include:
 
-## Edit the site
-- public/index.html: content and download filenames.
-- public/style.css: colors, responsive layout and typography.
-- public/app.js: FAQ behavior.
-- site.config.json: repository and release tag.
-- downloads.json: download sizes and SHA-256 checksums for the supplied 0.4.3 files.
-- scripts/build.mjs: produces the static Vercel output with release links.
+Your tablet model and Android version.
+Your Windows version.
+The app version on both devices.
+A description of the problem and steps to reproduce it.
+Screenshots or diagnostics, if available.
+🔓 Open source
 
-For a future app release, upload its assets to a new release, update filenames in index.html, the releaseTag/version in site.config.json and sizes/checksums in downloads.json. Rebuild/redeploy.
+Ken Mirror Screen’s original code is available under the MIT License. Third-party components retain their respective licenses.
 
-## Source and licensing
-This website and Ken's original app code use MIT. The public source ZIP includes the Windows JavaScript project, Android decoded smali/resources/native library project, available Java helper sources and build guidance. The original complete Android Java project is not available; the decoded project is provided for editing/rebuilding. Bundled third-party components retain their licenses and notices. The APK and Windows ZIP are the exact supplied files and have not been re-signed or modified for this website.
+The source release includes the Windows app source and a decoded Android project with helper Java source. It does not include a complete original Android Gradle project. See the source archive’s README for build details.
 
-Only release-assets/KenMirrorScreen-Source-0.4.3.zip is intended as the public app-source archive. Private developer recovery packages from earlier conversations contain secrets and must never be published.
+Created by Teacher Ken.
 
-## Documentation
-GitHub file/release limits: https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
-Vercel system variables: https://vercel.com/docs/environment-variables/system-environment-variables
+If Ken Mirror Screen helps you, give the repository a ⭐ and share it with others!
 
-This package is ready for you to publish; no GitHub repository or Vercel deployment has been created on your account.
+
